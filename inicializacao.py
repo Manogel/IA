@@ -3,6 +3,7 @@ import numpy as np
 import math
 
 def getFenotipo(lista):
+    lista = list(lista)
     str1 = ''.join(str(e) for e in lista)
     str1 = '0b'+ str1
     return int(str1, 2)
@@ -32,11 +33,10 @@ def inicializacao1(popInicial, tamCromossomo):
                 break """
             aux.append(getCromossomo2())
         f = getFenotipo(aux)
-        print(f'Fenotipo gerado: {f}')
+        #print(f'Fenotipo gerado: {f}')
         lista_fenotipo.append(f)
         matriz.append(np.array(aux))
-    print(np.array(matriz))
-    return lista_fenotipo
+    return np.array(matriz)
 
 def inicializacao2(popInicial, tamCromossomo):
     lista_fenotipo = list()
@@ -45,13 +45,13 @@ def inicializacao2(popInicial, tamCromossomo):
         while True:
             aux = []
             for coluna in range(tamCromossomo):
-                aux.append(getCromossomo2())
+                aux.append(getCromossomo1())
             fenotipo = getFenotipo(aux)
             if fenotipo not in lista_fenotipo:
                 lista_fenotipo.append(fenotipo)
                 break
         matriz.append(np.array(aux))
-    print(np.array(matriz))
+    return np.array(matriz)
 
 
 
